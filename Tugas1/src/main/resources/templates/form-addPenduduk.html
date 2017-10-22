@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Tambah Penduduk</title>
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+		<!--Import materialize.css-->
+		<link type="text/css" rel="stylesheet" href="/css/materialize.min.css"  media="screen,projection"/>
+		<!--Let browser know website is optimized for mobile-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		
+    </head>
+    <body>
+    	<!--Import jQuery before materialize.js-->
+    	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    	<script type="text/javascript" src="/js/materialize.min.js"></script>
+    	<script type="text/javascript" src="/js/script.js"></script>
+    	
+    	<!-- Navigation Bar -->
+    	<nav class="light-blue lighten-1" role="navigation">
+			<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Siduk DKI</a>
+				<ul class="right hide-on-med-and-down">
+					<li><a href="/#home">Home</a></li>
+					<li><a href="/#cariData">Mencari Data</a></li>
+					<li><a href="/#ubahData">Mengubah Data</a></li>
+					<li><a href="/#tambahData">Tambahkan Data</a></li>
+				</ul>
+				
+				<ul id="nav-mobile" class="side-nav">
+					<li><a href="/#home">Home</a></li>
+					<li><a href="/#cariData">Cari Data</a></li>
+					<li><a href="/#ubahData">Ubah Data</a></li>
+					<li><a href="/#tambahData">Tambahkan Data</a></li>
+				</ul>
+				<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+			</div>
+		</nav>
+		<!-- End of Navigation Bar -->
+		
+		<!-- Form for Add Penduduk -->
+		<div class="row">
+			<div class="col s10 offset-s1">
+				<div class="icon-block">
+					<h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
+					<h5 class="center">Masukkan Penduduk Baru Ke dalam Keluarga</h5><br/><br/>
+					<form action="/penduduk/tambah" method="post" th:object="${penduduk}">
+						<div>
+							<p>Masukkan Nama</p>
+							<input placeholder="Nama" name="nama" class="form-control" th:field="*{nama}" th:required="required"></input>
+						</div><br/>
+						<div>
+							<p>Tempat Lahir</p>
+							<input placeholder="Tempat Lahir" name="tempat_lahir" class="form-control" th:field="*{tempat_lahir}" th:required="required"></input>
+						</div><br/>
+						<div>
+							<p>Tanggal Lahir</p>
+							<input placeholder="yyyy-mm-dd" type="date" name="tanggal_lahir" class="form-control" th:field="*{tanggal_lahir}" th:required="required"></input>
+						</div><br/>
+						<div>
+							<p>Golongan Darah</p>
+							<select class="form-control" th:field="*{golongan_darah}" th:required="required">
+								<option value="A-" >A-</option>
+								<option value="A+" >A+</option>
+								<option value="B" >B-</option>
+								<option value="B+" >B+</option>
+								<option value="O-" >O-</option>
+								<option value="O+" >O+</option>
+								<option value="AB-" >AB-</option>
+								<option value="AB+" >AB+</option>
+							</select>
+						</div><br/>
+						<div>
+							<p>Jenis Kelamin</p>
+							<select class="form-control" th:field="*{jenis_kelamin}" th:required="required">
+								<option value="1">Perempuan</option>
+								<option value="0">Laki-laki</option>
+							</select>
+						</div><br/>
+						<div>
+							<p>Agama</p>
+							<input placeholder="Agama" name="agama" class="form-control" th:field="*{agama}" th:required="required"></input>
+						</div><br/>
+						<div>
+							<p>Status Pekawinan</p>
+							<select class="form-control" th:field="*{status_perkawinan}">
+								<option value="Kawin" >Kawin</option>
+								<option value="Belum Kawin" >Belum Kawin</option>
+							</select>
+						</div><br/>
+						<div>
+							<p>Pekerjaan</p>
+							<input placeholder="Pekerjaan" name="pekerjaan" class="form-control" th:field="*{pekerjaan}" th:required="required"></input>
+						</div><br/>
+						<div>
+							<p>Kewarganegaraan</p>
+							<select class="form-control" th:field="*{is_wni}">
+								<option value="1">WNI</option>
+								<option value="0">WNA</option>
+							</select>
+						</div><br/>
+						<div>
+							<p>Status Dalam Keluarga</p>
+							<input placeholder="Status dalam keluarga" name="status_dalam_keluarga" class="form-control" th:field="*{status_dalam_keluarga}" th:required="required"></input>
+						</div><br/>
+						<div>
+							<p>Status Kematian</p>
+							<select placeholder="Pilih status kematian" class="form-control" th:field="*{is_wafat}" th:required="required">
+								<option value="0">Hidup</option>
+								<option value="1">Wafat</option>
+							</select>
+						</div><br/>
+						<div>
+							<p>Id Keluarga</p>
+							<input placeholder="Id Keluarga" name="id_keluarga" class="form-control" th:field="*{id_keluarga}" th:required="required"></input>
+						</div><br/>
+						
+						<div class="center">
+							<input type="submit" value="Simpan" class="btn-large waves-effect waves-light orange"></input>
+						</div>
+					</form>
+				</div>
+			</div>
+			<br/><br/>
+		</div>
+		<!-- Form for Add Penduduk -->
+		
+		<!-- Footer -->	
+		<footer class="page-footer orange">
+			<div class="container">
+				<div class="row center">
+					<h5 class="white-text">Copyright</h5>
+					<p class="grey-text text-lighten-4">&copy; Siduk_dki</p>
+				</div>
+			</div>
+			<div class="footer-copyright">
+				<div class="container">
+			  	Made for <a class="orange-text text-lighten-3">APAP</a>
+			  	</div>
+			</div>
+		</footer>		
+    </body>
+</html>

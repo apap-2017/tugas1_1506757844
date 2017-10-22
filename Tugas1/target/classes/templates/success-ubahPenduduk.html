@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Penduduk Diubah</title>
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+		<!--Import materialize.css-->
+		<link type="text/css" rel="stylesheet" href="/css/materialize.min.css"  media="screen,projection"/>
+		
+		<!--Let browser know website is optimized for mobile-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+    	<!--Import jQuery before materialize.js-->
+    	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    	<script type="text/javascript" src="js/materialize.min.js"></script>
+    	
+    	<!-- Navigation Bar -->
+    	<nav class="light-blue lighten-1" role="navigation">
+			<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Siduk DKI</a>
+				<ul class="right hide-on-med-and-down">
+					<li><a href="/#home">Home</a></li>
+					<li><a href="/#cariData">Mencari Data</a></li>
+					<li><a href="/#ubahData">Mengubah Data</a></li>
+					<li><a href="/#tambahData">Tambahkan Data</a></li>
+				</ul>
+				
+				<ul id="nav-mobile" class="side-nav">
+					<li><a href="/#home">Home</a></li>
+					<li><a href="/#cariData">Cari Data</a></li>
+					<li><a href="/#ubahData">Ubah Data</a></li>
+					<li><a href="/#tambahData">Tambahkan Data</a></li>
+				</ul>
+				<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+			</div>
+		</nav>
+		<!-- End of Navigation Bar -->
+		
+		<div class="section no-pad-bot">
+			<div>
+				<br/><br/>
+				<div class="row center">
+					<h1 class="header col s12 orange-text">Sukses!</h1>
+					<h4 class="header col s12 orange-text" th:text="'Penduduk dengan NIK '+ ${nik}+ ' berhasil diubah'" ></h4>
+				</div>
+				<br/><br/><br/>		
+			</div>
+		</div>
+		
+		<!-- Footer -->	
+		<footer class="page-footer orange">
+			<div class="container">
+				<div class="row center">
+					<h5 class="white-text">Copyright</h5>
+					<p class="grey-text text-lighten-4">&copy; Siduk_dki</p>
+				</div>
+			</div>
+			<div class="footer-copyright">
+				<div class="container">
+			  	Made for <a class="orange-text text-lighten-3">APAP</a>
+			  	</div>
+			</div>
+		</footer>		
+    </body>
+</html>

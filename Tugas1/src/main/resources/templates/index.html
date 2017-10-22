@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Home</title>
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+		<!--Import materialize.css-->
+		<link type="text/css" rel="stylesheet" href="/css/materialize.min.css"  media="screen,projection"/>
+		
+		<!--Let browser know website is optimized for mobile-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+    	<!--Import jQuery before materialize.js-->
+    	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    	<script type="text/javascript" src="js/materialize.min.js"></script>
+    	
+    	<!-- Navigation Bar -->
+    	<nav class="light-blue lighten-1" role="navigation">
+			<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Siduk DKI</a>
+				<ul class="right hide-on-med-and-down">
+					<li><a href="/#home">Home</a></li>
+					<li><a href="/#cariData">Mencari Data</a></li>
+					<li><a href="/#ubahData">Mengubah Data</a></li>
+					<li><a href="/#tambahData">Tambahkan Data</a></li>
+				</ul>
+				
+				<ul id="nav-mobile" class="side-nav">
+					<li><a href="/#home">Home</a></li>
+					<li><a href="/#cariData">Cari Data</a></li>
+					<li><a href="/#ubahData">Ubah Data</a></li>
+					<li><a href="/#tambahData">Tambahkan Data</a></li>
+				</ul>
+				<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+			</div>
+		</nav>
+		<!-- End of Navigation Bar -->
+		
+		<!-- Home -->
+		<div class="section no-pad-bot" id="home">
+			<div>
+				<br/><br/>
+				<h1 class="header center orange-text">Siduk DKI</h1>
+				<div class="row center">
+					<h5 class="header col s12 light">Sistem Informasi Penduduk DKI Jakarta</h5>
+				</div>
+				<br/><br/><br/>		
+			</div>
+		</div>
+		<!-- End of Home -->
+		
+		<!-- Spacer -->
+		<div class="orange lighten-2"><br/></div>
+		<!-- End of Spacer -->
+		
+		<!-- Mencari Data -->
+		<div class="container" id="cariData">
+			<div class="section">
+				<div class="row center"><h4>Mencari Data</h4></div>
+				<!--   Icon Section   -->
+				<div class="row">
+					<div class="col s12 m6">
+						<div class="icon-block">
+							<h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
+							<h5 class="center">Lihat Data Penduduk Berdasarkan NIK</h5>
+							<form action="/penduduk" method="get">
+								<div>
+									<input placeholder="Masukkan NIK" name="NIK" class="form-control"></input>
+								</div>
+								<div class="center">
+									<input type="submit" value="Lihat" class="btn-large waves-effect waves-light orange"></input>
+								</div>
+							</form>
+						</div>
+					</div>
+				
+					<div class="col s12 m6">
+						<div class="icon-block">
+							<h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
+							<h5 class="center">Lihat Data Keluarga Berdasarkan NKK</h5>
+							<form action="/keluarga" method="get">
+								<div>
+									<input placeholder="Masukkan NKK" name="nkk" class="form-control"></input>
+								</div>
+								<div class="center">
+									<input type="submit" value="Lihat" class="btn-large waves-effect waves-light orange"></input>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+	
+			</div>
+			<br/><br/><br/>
+		</div>
+		<!-- End of Lihat Data -->
+		
+		<!-- Spacer -->
+		<div class="orange lighten-2"><br/></div>
+		<!-- End of Spacer -->
+		
+		<!-- Mengubah Data
+		<div class="container" id="ubahData">
+			<div class="section">
+				<div class="row center"><h4>Mengubah Data</h4></div>
+				
+				<div class="row">
+					<div class="col s12 m6">
+						<div class="icon-block">
+							<h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
+							<h5 class="center">Ubah Data Penduduk Berdasarkan NIK</h5>
+							<form th:action="'/penduduk/ubah/'+${nik}" method="post">
+								<div>
+									<input placeholder="Masukkan NIK" th:field="*{nik}" name="nik" class="form-control"></input>
+								</div>
+								<div class="center">
+									<input type="submit" class="btn-large waves-effect waves-light orange"></input>
+								</div>
+							</form>
+						</div>
+					</div>
+				
+					<div class="col s12 m6">
+						<div class="icon-block">
+							<h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
+							<h5 class="center">Ubah Data Keluarga Berdasarkan NKK</h5>
+							<form th:action="'/keluarga/ubah/' + ${nkk}" method="get">
+								<div>
+									<input placeholder="Masukkan NKK" name="nkk" class="form-control"></input>
+								</div>
+								<div class="center">
+									<input type="submit" value="Ubah" class="btn-large waves-effect waves-light orange"></input>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+	
+			</div>
+			<br/><br/><br/>
+		</div>
+		End of Mengubah Data -->
+		
+		<!-- Spacer 
+		<div class="orange lighten-2"><br/></div>
+		 End of Spacer -->
+		
+		<!-- Menambahkan Data -->
+		<div class="container" id="tambahData">
+			<div class="section">
+				<div class="row center"><h4>Menambahkan Data</h4></div>
+				<!--   Icon Section   -->
+				<div class="row">
+					<div class="col s12 m6">
+						<div class="icon-block">
+							<h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
+							<h5 class="center">Tambahkan Data Penduduk</h5>
+							<div class="center">
+								<button class="btn-large waves-effect waves-light orange center">
+									<a href="/penduduk/tambah" class="white-text">Tambah</a>
+								</button>
+							</div>
+						</div>
+					</div>
+				
+					<div class="col s12 m6">
+						<div class="icon-block">
+							<h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
+							<h5 class="center">Tambahkan Data Keluarga</h5>
+							<div class="center">
+								<button class="btn-large waves-effect waves-light orange center">
+									<a href="/keluarga/tambah" class="white-text">Tambah</a>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+	
+			</div>
+			<br/><br/><br/>
+		</div>
+		<!-- End of Mengubah Data -->
+		
+		<!-- Spacer -->
+		<div class="orange lighten-2"><br/></div>
+		<!-- End of Spacer -->
+		
+		<!-- Mencari Penduduk -->
+		<div class="container" id="tambahData">
+			<div class="section">
+				<div class="row center">
+					<h4>Mencari Penduduk</h4>
+					<div class="icon-block">
+						<h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
+						<div class="center">
+							<button class="btn-large waves-effect waves-light orange center">
+								<a href="/penduduk/cari" class="white-text">Cari</a>
+							</button>
+						</div>
+					</div>
+				</div>
+	
+			</div>
+			<br/><br/><br/>
+		</div>
+		<!-- End of Mencari Penduduk -->
+		
+		<!-- Footer -->	
+		<footer class="page-footer orange">
+			<div class="container">
+				<div class="row center">
+					<h5 class="white-text">Copyright</h5>
+					<p class="grey-text text-lighten-4">&copy; Siduk_dki</p>
+				</div>
+			</div>
+			<div class="footer-copyright">
+				<div class="container">
+			  	Made for <a class="orange-text text-lighten-3">APAP</a>
+			  	</div>
+			</div>
+		</footer>		
+    </body>
+</html>

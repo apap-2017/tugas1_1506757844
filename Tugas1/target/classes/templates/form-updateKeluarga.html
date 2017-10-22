@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Form Ubah Keluarga</title>
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+		<!--Import materialize.css-->
+		<link type="text/css" rel="stylesheet" href="/css/materialize.min.css"  media="screen,projection"/>
+		<!--Let browser know website is optimized for mobile-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		
+    </head>
+    <body>
+    	<!--Import jQuery before materialize.js-->
+    	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    	<script type="text/javascript" src="/js/materialize.min.js"></script>
+    	<script type="text/javascript" src="/js/script.js"></script>
+    	
+    	<!-- Navigation Bar -->
+    	<nav class="light-blue lighten-1" role="navigation">
+			<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Siduk DKI</a>
+				<ul class="right hide-on-med-and-down">
+					<li><a href="/#home">Home</a></li>
+					<li><a href="/#cariData">Mencari Data</a></li>
+					<li><a href="/#ubahData">Mengubah Data</a></li>
+					<li><a href="/#tambahData">Tambahkan Data</a></li>
+				</ul>
+				
+				<ul id="nav-mobile" class="side-nav">
+					<li><a href="/#home">Home</a></li>
+					<li><a href="/#cariData">Cari Data</a></li>
+					<li><a href="/#ubahData">Ubah Data</a></li>
+					<li><a href="/#tambahData">Tambahkan Data</a></li>
+				</ul>
+				<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+			</div>
+		</nav>
+		<!-- End of Navigation Bar -->
+		
+		<!-- Form for Add Penduduk -->
+		<div class="row">
+			<div class="col s10 offset-s1">
+				<div class="icon-block">
+					<h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
+					<h5 class="center">Masukkan Keluarga Baru</h5><br/><br/>
+					<form th:action="'/keluarga/ubah/'+${keluarga.nomor_kk}" method="post" th:object="${keluarga}">
+						<input type="hidden" th:field="*{id}" th:value="${keluarga.id}"></input>
+						<div>
+							<p>Alamat</p>
+							<input placeholder="Alamat" name="alamat" class="form-control" th:field="*{alamat}"></input>
+						</div><br/>
+						<div>
+							<p>RT</p>
+							<input placeholder="RT" name="RT" class="form-control" th:field="*{RT}"></input>
+						</div><br/>
+						<div>
+							<p>RW</p>
+							<input placeholder="RW" name="RW" class="form-control" th:field="*{RW}"></input>
+						</div><br/>
+						<div>
+							<p>Kelurahan</p>
+							<select id="kelurahan" class="form-control" th:field="*{id_kelurahan}">
+								<option th:each="kelurahan : ${listKelurahan}" 
+          								th:value="${kelurahan.id}"
+          								th:text="${kelurahan.nama_kelurahan}">Nama Kelurahan
+          						</option>
+							</select>
+						</div><br/>
+						<div>
+							<p>Kecamatan</p>
+							<input id="kecamatan" name="kecamatan" class="form-control" readonly="readonly"></input>
+						</div><br/>
+						<div>
+							<p>Kota</p>
+							<input id="kota" name="kota" class="form-control" readonly="readonly"></input>
+						</div><br/>
+						
+						<div class="center">
+							<input type="submit" value="Simpan" class="btn-large waves-effect waves-light orange"></input>
+						</div>
+					</form>
+				</div>
+			</div>
+			<br/><br/>
+		</div>
+		<!-- Form for Add Penduduk -->
+		
+		<!-- Footer -->	
+		<footer class="page-footer orange">
+			<div class="container">
+				<div class="row center">
+					<h5 class="white-text">Copyright</h5>
+					<p class="grey-text text-lighten-4">&copy; Siduk_dki</p>
+				</div>
+			</div>
+			<div class="footer-copyright">
+				<div class="container">
+			  	Made for <a class="orange-text text-lighten-3">APAP</a>
+			  	</div>
+			</div>
+		</footer>		
+    </body>
+    <script th:inline="javascript">
+		var kelurahan = [[${listKelurahan}]];
+		var kecamatan = [[${listKecamatan}]];;
+		var kota = [[${listKota}]];
+		
+		getSomething = function(list, id){
+			return list.filter(function(obj){
+				return obj.id == id
+			})[0]
+		}
+		
+		console.log(getSomething(kelurahan, 1))
+		
+		$( document ).ready(function() {
+			$('#kelurahan').on('change', function(){
+				tempKel = getSomething(kelurahan, this.value)
+				tempKec = getSomething(kecamatan, tempKel.id_kecamatan)
+				tempKot = getSomething(kota, tempKec.id_kota)
+				
+				$('#kecamatan').val(tempKec.nama_kecamatan)
+				$('#kota').val(tempKot.nama_kota)
+			});		
+		});
+		
+		
+	</script>
+</html>

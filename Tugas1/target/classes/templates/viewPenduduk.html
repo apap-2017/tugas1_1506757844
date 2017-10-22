@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Penduduk</title>
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+		<!--Import materialize.css-->
+		<link type="text/css" rel="stylesheet" href="/css/materialize.min.css"  media="screen,projection"/>
+		
+		<!--Let browser know website is optimized for mobile-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+    	<!--Import jQuery before materialize.js-->
+    	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    	<script type="text/javascript" src="js/materialize.min.js"></script>
+    	
+    	<!-- Navigation Bar -->
+    	<nav class="light-blue lighten-1" role="navigation">
+			<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Siduk DKI</a>
+				<ul class="right hide-on-med-and-down">
+					<li><a href="/#home">Home</a></li>
+					<li><a href="/#cariData">Mencari Data</a></li>
+					<li><a href="/#ubahData">Mengubah Data</a></li>
+					<li><a href="/#tambahData">Tambahkan Data</a></li>
+				</ul>
+				
+				<ul id="nav-mobile" class="side-nav">
+					<li><a href="/#home">Home</a></li>
+					<li><a href="/#cariData">Cari Data</a></li>
+					<li><a href="/#ubahData">Ubah Data</a></li>
+					<li><a href="/#tambahData">Tambahkan Data</a></li>
+				</ul>
+				<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+			</div>
+		</nav>
+		<!-- End of Navigation Bar -->
+		
+		<!-- Data Keluarga -->
+		<section>
+			<div class="col s12">
+				<h3 th:text="'Lihat Data Keluarga - ' + ${keluarga.nomor_kk}" class="header center-align orange-text"></h3><br/>
+				<div class="row">
+					<div class="col s4"></div>
+					<div class="col s2">
+						<p>NIK</p>
+						<p>Nama</p>
+						<p>Tempat/Tanggal Lahir</p>
+						<p>Alamat</p>
+						<p>RT/RW</p>
+						<p>Kelurahan/Desa</p>
+						<p>Kecamatan</p>
+						<p>Kota</p>
+						<p>Golongan Darah</p>
+						<p>Agama</p>
+						<p>Status Perkawinan</p>
+						<p>Status Dalam Keuarga</p>
+						<p>Pekerjaan</p>
+						<p>Kewarganegaraan</p>
+						<p>Status Kematian</p>
+					</div>
+					<div class="col s6">
+						<p th:text="${penduduk.nik}"></p>
+						<p th:text="${penduduk.nama}"></p>
+						<p th:text="${penduduk.tempat_lahir} + ', ' + ${penduduk.tanggal_lahir}"></p>
+						<p th:text="${keluarga.alamat}"></p>
+						<p th:text="${keluarga.RT} + '/' + ${keluarga.RW}"></p>
+						<p th:text="${kelurahan.nama_kelurahan}"></p>
+						<p th:text="${kecamatan.nama_kecamatan}"></p>
+						<p th:text="${kota.nama_kota}"></p>
+						<p th:text="${penduduk.golongan_darah}"></p>
+						<p th:text="${penduduk.agama}"></p>
+						<p th:text="${penduduk.status_perkawinan}"></p>
+						<p th:text="${penduduk.status_dalam_keluarga}"></p>
+						<p th:text="${penduduk.pekerjaan}"></p>
+						<div>
+							<div th:if="${penduduk.is_wni==1}">
+								<p>WNI</p>
+							</div>
+							<div th:unless="${penduduk.is_wni==1}">
+								<p>WNA</p>
+							</div>
+						</div>
+						<div>
+							<div th:if="${penduduk.is_wafat==1}">
+								<p>Meninggal</p>
+							</div>
+							<div th:unless="${penduduk.is_wafat==1}">
+								<p>Hidup</p>
+							</div>
+						</div>
+					</div>
+					<div th:unless="${penduduk.is_wafat==1}">
+						<form action="/penduduk/mati" method="post">
+							<input type="hidden" name="nik" th:value="${penduduk.nik}"></input>
+							<input type="submit" th:value="Nonaktifkan" class="col offset-s8 btn-large waves-effect waves-light red"></input>
+						</form>
+					</div>
+					<div class="row"></div>
+				</div>
+			</div>
+		</section>
+		<!-- End of Data Penduduk -->
+		
+		<!-- Footer -->	
+		<footer class="page-footer orange">
+			<div class="container">
+				<div class="row center">
+					<h5 class="white-text">Copyright</h5>
+					<p class="grey-text text-lighten-4">&copy; Siduk_dki</p>
+				</div>
+			</div>
+			<div class="footer-copyright">
+				<div class="container">
+			  	Made for <a class="orange-text text-lighten-3">APAP</a>
+			  	</div>
+			</div>
+		</footer>		
+    </body>
+</html>
